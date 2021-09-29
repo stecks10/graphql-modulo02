@@ -6,7 +6,7 @@ const turmaResolvers = {
     description: 'string de data e hora no formato ISO-8601',
     serialize: (value) => new Date(value).toISOString(),
     parseValue: (value) => new Date(value),
-    parseLiteral: (ast) => new Date(ast.value).toISOString(),
+    parseLiteral: (ast) => new Date(ast).toISOString(),
   }),
 
   Query: {
@@ -26,6 +26,8 @@ const turmaResolvers = {
   Turma: {
     matriculas: (parent, _, { dataSources }) =>
       dataSources.matriculasAPI.getMatricularPorTurma(parent.id),
+    docente: (parent, _, { dataSources }) =>
+      dataSources.usersAPI.getUserById(parent.docente_id),
   },
 };
 
