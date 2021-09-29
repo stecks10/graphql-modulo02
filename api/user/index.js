@@ -1,9 +1,9 @@
-const userSchema = require('./schema/user/graphql');
+const userSchema = require('./schema/user.graphql');
 const userResolvers = require('./resolvers/userResolvers');
-const UsersApi = require('./datasource/user');
+const UsersAPI = require('./datasource/user');
 
 module.exports = {
   userSchema,
   userResolvers,
-  UsersApi,
+  UsersAPI,
 };
