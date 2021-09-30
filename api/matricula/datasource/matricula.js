@@ -24,10 +24,19 @@ class MatriculasAPI extends SQLDataSource {
   async getMatriculasPorTurma(idTurma) {
     const matriculas = await this.db
       .select('*')
-      .from('matricular')
+      .from('matriculas')
       .where({ turma_id: idTurma });
 
     console.log(matriculas);
+    return matriculas;
+  }
+
+  async getMatriculasPorEstudante(idEstudante) {
+    const matriculas = await this.db
+      .select('*')
+      .from('matriculas')
+      .where({ estudante_id: idEstudante });
+
     return matriculas;
   }
 }
