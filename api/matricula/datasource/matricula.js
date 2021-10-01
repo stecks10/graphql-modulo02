@@ -39,6 +39,15 @@ class MatriculasAPI extends SQLDataSource {
 
     return matriculas;
   }
+
+  async deletarMatricula(idMatricula) {
+    await this.db('matricula')
+      .where({ id: Number(idMatricula) })
+      .del();
+
+    this.Resposta.mensagem = 'registro deletado';
+    return this.Resposta;
+  }
 }
 
 module.exports = MatriculasAPI;
