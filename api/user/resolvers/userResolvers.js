@@ -35,7 +35,7 @@ const userResolvers = {
   },
   User: {
     matriculas: (parent, _, { dataSources }) =>
-      dataSources.matriculasAPI.getMatriculasPorEstudante(parent.id),
+      dataSources.matriculasAPI.matriculasLoader.load(parent.id),
   },
 };
 
