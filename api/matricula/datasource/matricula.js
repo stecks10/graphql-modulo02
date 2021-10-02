@@ -40,7 +40,11 @@ class MatriculasAPI extends SQLDataSource {
       .from('matriculas')
       .whereIn('estudante_id', idsEstudantes)
       .select();
-    return matriculas;
+    const arrayFinal = idsEstudantes.map((id) =>
+      matriculas.filter((matricula) => matricula.estudante_id === id)
+    );
+    console.log(arrayFinal);
+    return arrayFinal;
   }
 
   async deletarMatricula(idMatricula) {
