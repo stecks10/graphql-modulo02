@@ -19,23 +19,22 @@ const userResolvers = {
     parseLiteral: (ast) => new Date(ast.value),
   }),
   Query: {
-    users: (root, args, { dataSources }) => dataSources.usersAPI.getUsers(),
-    user: (root, { id }, { dataSources }) =>
-      dataSources.usersAPI.getUserById(id),
+    users: (_, args, { dataSources }) => dataSources.usersAPI.getUsers(args),
+    user: (_, { id }, { dataSources }) => dataSources.usersAPI.getUserById(id),
   },
   Mutation: {
-    adicionaUser: async (root, { user }, { dataSources }) =>
+    adicionaUser: async (_, { user }, { dataSources }) =>
       dataSources.usersAPI.adicionaUser(user),
-    atualizaUser: async (root, novosDados, { dataSources }) => {
+    atualizaUser: async (_, novosDados, { dataSources }) => {
       console.log(novosDados);
       return dataSources.usersAPI.atualizaUser(novosDados);
     },
-    deletaUser: async (root, { id }, { dataSources }) =>
+    deletaUser: async (_, { id }, { dataSources }) =>
       dataSources.usersAPI.deletaUser(id),
   },
   User: {
     matriculas: (parent, _, { dataSources }) =>
-      dataSources.matriculasAPI.matriculasLoader.load(parent.id),
+      dataSources.matriculasAPI.getMatriculasPorEstudante.load(parent.id),
   },
 };
 

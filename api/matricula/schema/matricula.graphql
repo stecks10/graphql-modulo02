@@ -7,15 +7,16 @@ scalar DateTime
     id: ID!
     estudante: User!
     turma: Turma!
-    createAt: DateTime!
+    createdAt: DateTime!
     status: String!
   }
 
   type Mutation {
-    matricularEstudante (estudante: ID!, turma: ID!) : RespostaPadrao!
+    matricularEstudante (estudante: ID!, turma: ID!): RespostaPadrao!
     deletarMatricula (matricula: ID!): RespostaPadrao!
     cancelarMatricula (matricula: ID!): RespostaPadrao!
   }
+
 `
 
 module.exports = matriculaSchema
